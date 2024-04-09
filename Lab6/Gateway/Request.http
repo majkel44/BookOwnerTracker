@@ -1,0 +1,78 @@
+### Get all books
+GET http://localhost:8086/books
+
+### Get book
+GET http://localhost:8086/books/550e8400-e29b-41d4-a716-446655440000
+
+### Get wrong book
+GET http://localhost:8083/books/3c6f1eb1-8069-44ab-988f-d7fed2b65d87
+
+### Get owner's books
+GET http://localhost:8083/owners/81e1c2a9-7f57-439b-b53d-6db88b071e4e/books
+
+### Get wrong owner's books
+GET http://localhost:8083/owners/3c6f1eb1-8069-44ab-988f-d7fed2b65d86/books
+
+### Create book
+POST http://localhost:8083/books
+Content-Type: application/json
+
+{
+  "title": "SomeBook",
+  "number_of_pages": 180,
+  "ownerID": "81e1c2a9-7f57-439b-b53d-6db88b071e4e"
+}
+
+### Create wrong owner's book
+POST http://localhost:8083/books
+Content-Type: application/json
+
+{
+  "title": "OtherBook",
+  "number_of_pages": 180,
+  "ownerID": "3c6f1eb1-8069-44ab-988f-d7fed2b65d86"
+}
+
+### Update book
+PUT http://localhost:8083/books/550e8400-e29b-41d4-a716-446655440000
+Content-Type: application/json
+
+{
+  "title": "UpdatedBook",
+  "number_of_pages": 360,
+  "ownerID": "81e1c2a9-7f57-439b-b53d-6db88b071e4e"
+}
+
+### Delete book
+DELETE http://localhost:8083/books/550e8400-e29b-41d4-a716-446655440000
+
+### Get owner
+GET http://localhost:8083/owners/81e1c2a9-7f57-439b-b53d-6db88b071e4e
+
+### Get all owners
+GET http://localhost:8086/owners
+
+### Create owner
+POST http://localhost:8083/owners
+Content-Type: application/json
+
+{
+  "name": "Billy",
+  "age": 18
+}
+
+### Get empty owner's books
+GET http://localhost:8083/owners/418417df-8b0d-4799-90bc-f4501d1509ed/books
+// change uuid
+
+### Update owner
+PUT http://localhost:8083/owners/81e1c2a9-7f57-439b-b53d-6db88b071e4e
+Content-Type: application/json
+
+{
+  "name": "Willy",
+  "age": 45
+}
+
+### Delete owner
+DELETE http://localhost:8083/owners/81e1c2a9-7f57-439b-b53d-6db88b071e4e

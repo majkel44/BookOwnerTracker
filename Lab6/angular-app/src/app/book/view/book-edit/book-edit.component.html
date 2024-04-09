@@ -1,0 +1,46 @@
+<article *ngIf="book">
+  <header><h2>Edit book</h2></header>
+
+  <form class="container"  #form="ngForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-4 p-2">
+        <div>
+          <label for="title">title:</label>
+          <input id="title" name="title" [(ngModel)]="book.title"/>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-4 p-2">
+        <div>
+          <label for="number_of_pages">Number Of Pages:</label>
+          <input id="number_of_pages" name="number_of_pages" [(ngModel)]="book.number_of_pages"/>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-4 p-2">
+        <fieldset *ngIf="owners">
+          <legend>Owner:</legend>
+          <div *ngFor="let owner of owners.owners">
+            <label>
+              <input type="radio" name="owner" [(ngModel)]="book.owner" [value]="owner.id"/>
+              {{owner.name}}
+            </label>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-2 p-2">
+        <button type="submit">Update</button>
+      </div>
+      <div class="col-2 p-2">
+        <button type="button" (click)="form.resetForm(original)">Reset</button>
+      </div>
+    </div>
+  </form>
+</article>

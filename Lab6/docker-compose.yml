@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  element:
+    image: element0:latest
+    restart: always
+    ports:
+      - "8081:8080"
+
+
+  category:
+    image: category0:latest
+    restart: always
+    environment:
+      ELEMENT_URL: "http://element:8080"
+    ports:
+      - "8082:8080"
+
+
+  gateway:
+    image: gateway0:latest
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      ELEMENT_URL: "http://element:8080"
+      CATEGORY_URL: "http://category:8080"
+      GATEWAY_HOST: "gateway:8080"
+
+
+  angular:
+    image: angular0:latest
+    restart: always
+    environment:
+      API_URL: "http://gateway:8080/api"
+    ports:
+      - "8084:80"
+
+
+
+

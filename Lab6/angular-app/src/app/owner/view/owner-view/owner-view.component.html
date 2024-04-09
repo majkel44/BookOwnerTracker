@@ -1,0 +1,52 @@
+<article *ngIf="owner">
+  <header><h2>{{owner.name}}</h2></header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-4">
+        <div class="row mb-2">
+          <div class="col-6">
+            Books
+          </div>
+          <div class="col-6">
+            <table *ngIf="books">
+              <thead>
+              <tr>
+                <th>Title</th>
+                <th>View</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let book of books.books">
+                <td>{{book.title}}</td>
+                <td>
+                  <a [routerLink]="['/books', book.id]">View</a>
+                </td>
+                <td>
+                  <a [routerLink]="['/books', book.id, 'edit']">Edit</a>
+                </td>
+                <td>
+                  <button (click)="onDelete(book)">Delete</button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="row mb-2">
+          <div class="col-6">
+            Age
+          </div>
+          <div class="col-6">
+            <span>{{owner.age}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+<div><app-book-add></app-book-add></div>

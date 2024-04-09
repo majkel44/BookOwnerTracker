@@ -1,0 +1,30 @@
+<article class="text--justified">
+  <header><h2>Owners</h2></header>
+
+  <table *ngIf="owners">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>View</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let owner of owners.owners">
+      <td>{{owner.name}}</td>
+      <td>
+        <a [routerLink]="['/owners', owner.id]">View</a>
+      </td>
+      <td>
+        <a [routerLink]="['/owners', owner.id, 'edit']">Edit</a>
+      </td>
+      <td>
+        <button (click)="onDelete(owner)">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</article>
+
+<div><app-owner-add></app-owner-add></div>
